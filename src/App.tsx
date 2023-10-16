@@ -5,8 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home/Home";
 import Loader from "./fragments/Loader";
 const Members = lazy(() => import('./pages/Members/Members'))
-// import Members from "./pages/Members/Members";
-
+const MemberDetails = lazy(() => import('./pages/MemberDetails/MemberDetails'))
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +18,11 @@ function App() {
             </Suspense>
           } />
         </Route>
+        <Route path='detail' element={
+          <Suspense fallback={<Loader />}>
+            <MemberDetails />
+          </Suspense>
+        } />
       </Routes>
     </BrowserRouter>
   )
