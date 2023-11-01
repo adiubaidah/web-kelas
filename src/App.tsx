@@ -6,6 +6,9 @@ import Home from "./pages/Home/Home";
 import Loader from "./fragments/Loader";
 const Members = lazy(() => import('./pages/Members/Members'))
 const MemberDetails = lazy(() => import('./pages/MemberDetails/MemberDetails'))
+const Login = lazy(() => import("./pages/Admin/Login"))
+const Dashboard = lazy(() => import("./pages/Admin/Dashboard"))
+
 function App() {
   return (
     <BrowserRouter>
@@ -17,12 +20,23 @@ function App() {
               <Members />
             </Suspense>
           } />
+          <Route path='detail' element={
+            <Suspense fallback={<Loader />}>
+              <MemberDetails />
+            </Suspense>
+          } />
+          <Route path='login' element={
+            <Suspense fallback={<Loader />}>
+              <Login />
+            </Suspense>
+          } />
+          <Route path='dashboard' element={
+            <Suspense fallback={<Loader />}>
+              <Dashboard />
+            </Suspense>
+          } />
         </Route>
-        <Route path='detail' element={
-          <Suspense fallback={<Loader />}>
-            <MemberDetails />
-          </Suspense>
-        } />
+
       </Routes>
     </BrowserRouter>
   )
