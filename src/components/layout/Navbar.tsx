@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { navLinks } from "../constant"
+import { navLinks } from "../../constant"
 
 function Navbar() {
 

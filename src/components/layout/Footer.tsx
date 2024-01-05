@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { navLinks, socialMedias } from "../constant"
+import { navLinks, socialMedias } from "../../constant"
 
 function Footer() {
   return (
