@@ -1,38 +1,78 @@
-import { useEffect, useState } from "react"
+import React, {useState} from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
-import type { Member } from "../../types"
-import Card from "./components/Card"
-import Pagination from "../../fragments/Pagination"
+import ServiceMember from "@/actions/members";
 
+import SearchField from "./components/SearchField";
+import { Member } from "@/types";
+import Card from "./components/Card";
+import { Button } from "@/components/ui/button";
+import Loader from "@/fragments/Loader";
+import { Loader2 } from "lucide-react";
 
 function Members() {
-    const [members, setMembers] = useState<Member[]>([])
+  const [search, setSearch] = useState('');
+  const {
+    data,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["get-members", {search}],
+    queryFn: ({pageParam}) => {
+      const result = ServiceMember.getAll({pageParam, search})
+      return result
+    },
+    staleTime: 1000 * 60 * 5,
+    getNextPageParam: (lastPage) => lastPage.data.nextPage,
+    initialPageParam: 0,
+  });
 
-    useEffect(() => {
+  return (
+    <div className="container max-w-full">
+      <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-[63.98px] font-lemon">
+        Daftar Anggota
+      </h1>
+      <SearchField search={search} setSearch={setSearch} isFetching={isFetching}/>
+      <div className="mt-[122px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {
+          isFetching ? <Loader className="h-full w-full flex justify-center" /> : ""
+        }
+        {data?.pages.map((group, i) => (
+          <React.Fragment key={i}>
+            {group.data.result.map((member: Member) => (
+              <Card {...member} key={member.id} />
+            ))}
+          </React.Fragment>
+        ))}
+      </div>
 
-
-    }, []);
-
-  
-
-    return (
-        <div className="container max-w-full">
-            <h1 className="text-5xl font-bold leading-[63.98px]">Daftar Anggota</h1>
-            <form className="w-full mt-14 gap-x-2 flex">
-                <input className="h-14 bg-indigo-950 rounded-lg px-[34px] border border-blue-800 w-full font-dm text-second focus:outline-0" placeholder="Cari anggota kelas" />
-                <button type="submit" className="px-8 py-3 rounded-lg bg-blue-600 font-dm whitespace-nowrap">Cari Anggota</button>
-            </form>
-            <div className="mt-[122px] grid grid-cols-3 gap-7">
-                {
-                    members.map((item) => <Card {...item} />)
-                }
-
-            </div>
-            <div className="mt-24 flex justify-center">
-                <Pagination />
-            </div>
-        </div>
-    )
+      <div className="w-full text-center">{data?.pages[0].data.result.length === 0 ? "Lupa nama temen ?" : "" }</div>
+      <div className="mt-7 flex justify-center">
+        {hasNextPage && (
+          <Button
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
+            variant="outline"
+          >
+            {
+              isFetchingNextPage ?
+              (<>
+                <Loader2  className="animate-spin w-4 h-4 mr-3"/>
+                Mengambil data...
+              </>)
+              : (
+                <>
+                Lebih banyak
+                </>
+              )
+            }
+          </Button>
+        )}
+      </div>
+    </div>
+  );
 }
 
-export default Members
+export default Members;

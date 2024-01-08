@@ -3,6 +3,7 @@ import { navLinks } from "../../constant"
 
 function Navbar() {
 
+
   return (
     <header className="container flex justify-between py-[45px]">
       <h1>T1 A 2022</h1>

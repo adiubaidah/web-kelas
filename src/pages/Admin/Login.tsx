@@ -38,23 +38,10 @@ function Login() {
       })
     );
     setTimeout(() => {
-      navigate("/dashboard")
-    }, 2000);
+      navigate("/admin")
+    }, 1500);
     }
   });
-
-  // if (loginMutation.isSuccess) {
-  //   dispatch(
-  //     openToast({
-  //       isActive: true,
-  //       message: "Login berhasil",
-  //       type: "success",
-  //     })
-  //   );
-  //   setTimeout(() => {
-  //     return <Navigate to={"/dashboard"} />;
-  //   }, 4000);
-  // }
 
   const onSubmit: SubmitHandler<User> = async (payload) => {
     loginMutation.mutate({

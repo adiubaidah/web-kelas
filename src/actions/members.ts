@@ -1,8 +1,13 @@
 import { axiosInstance } from "@/lib/utils";
 
 class ServiceMember{
-    getAll() {
-        return axiosInstance.get('/member');
+    getAll({pageParam, search}: {pageParam? : number, search?: string}) {
+        return axiosInstance.get('/member', {
+            params: {
+                page: pageParam,
+                search
+            }   
+        });
     }
     getAllMemberWithoutImage() {
         return axiosInstance.get("/member-without-image")

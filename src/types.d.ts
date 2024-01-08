@@ -14,6 +14,22 @@ type Member =  {
 
 type NewMember = Omit<Member, "id">
 
+type Event = {
+    id: string
+    name: string,
+    year: number
+}
+
+type NewEvent = Omit<Event, "id">
+
+type Gallery = {
+    id: string,
+    image: string,
+    eventId: string,
+}
+
+type NewGallery = Omit<Gallery, "id">
+
 interface Toast {
     isActive: boolean,
     type: 'success' | 'error' | null,
@@ -26,4 +42,4 @@ type User = {
     password: string
 }
 
-export type { Member, Toast, User, NewMember }
+export type { Member, Toast, User, NewMember, Event, NewEvent, Gallery, NewGallery }

@@ -12,13 +12,18 @@ import Loader from "./fragments/Loader";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
 import UnauthorizedRoute from "./components/layout/UnauthorizedRoute";
 
-
+//For User
 const Members = lazy(() => import("./pages/Members/Members"));
 const MemberDetails = lazy(() => import("./pages/MemberDetails/MemberDetails"));
-const EditMember = lazy(() =>import("./pages/Admin/members/EditMember"));
+
+//For Admin
+const Admin = lazy(()=> import("./pages/Admin/Dashboard"))
+const EditMember = lazy(() => import("./pages/Admin/members/EditMember"));
 const AddMember = lazy(() => import("./pages/Admin/members/AddMember"));
 const Login = lazy(() => import("./pages/Admin/Login"));
-const Dashboard = lazy(() => import("./pages/Admin/Dashboard"));
+const AdminMembers = lazy(() => import("./pages/Admin/members/Members"));
+const Event = lazy(()=> import("./pages/Admin/events/Event"));
+const GalleryAdmin = lazy(()=> import("./pages/Admin/galleries/Gallery"));
 
 function App() {
   return (
@@ -37,7 +42,7 @@ function App() {
                 }
               />
               <Route
-                path="/detail"
+                path="/anggota/:slug"
                 element={
                   <Suspense fallback={<Loader />}>
                     <MemberDetails />
@@ -54,32 +59,58 @@ function App() {
                   }
                 />
               </Route>
-              <Route element={<ProtectedRoute redirectPath="/login" />}>
-                <Route
-                  path="/dashboard"
-                  element={
-                    <Suspense fallback={<Loader />}>
-                      <Dashboard />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/add-member"
-                  element={
-                    <Suspense fallback={<Loader />}>
-                      <AddMember />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/edit-member/:id"
-                  element={
-                    <Suspense fallback={<Loader />}>
-                      <EditMember />
-                    </Suspense>
-                  }
-                />
-              </Route>
+            </Route>
+            <Route element={<ProtectedRoute redirectPath="/login" />}>
+              
+              <Route
+                path="/admin"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Admin />
+                  </Suspense>
+                }
+              />
+              
+              <Route
+                path="/admin/member"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <AdminMembers />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/admin/add-member"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <AddMember />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/admin/edit-member/:id"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <EditMember />
+                  </Suspense>
+                }
+              />
+               <Route
+                path="/admin/event"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Event />
+                  </Suspense>
+                }
+              />
+               <Route
+                path="/admin/event/:eventId/gallery"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <GalleryAdmin />
+                  </Suspense>
+                }
+              />
             </Route>
           </Routes>
         </BrowserRouter>

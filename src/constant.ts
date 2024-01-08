@@ -8,14 +8,26 @@ const navLinks = [
         link: 'galeri'
     },
     {
-        name: 'Jadwal',
-        link: 'jadwal'
-    },
-    {
         name: 'Anggota',
         link: 'anggota'
     }
 ]
+
+const navLinksForAdmin = [
+    {
+        name: 'Beranda',
+        link: '/admin'
+    },
+    {
+        name: 'Event',
+        link: '/admin/event'
+    },
+    {
+        name: 'Anggota',
+        link: '/admin/member'
+    }
+]
+
 
 const missions = [
     {
@@ -52,4 +64,4 @@ const socialMedias = [
 ]
 
 
-export { navLinks, missions, socialMedias}
+export { navLinks, missions, socialMedias, navLinksForAdmin}

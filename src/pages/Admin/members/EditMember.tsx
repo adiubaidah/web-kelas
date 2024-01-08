@@ -50,7 +50,7 @@ const EditMember = () => {
         }))
         reset()
         setTimeout(() => {
-          navigate("/dashboard")
+          navigate("/admin/member")
         }, 1500)
     },
     onError: ()=> {

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
+
 import { NewMember } from "@/types";
 
 import { openToast } from "@/reducers/toast";
@@ -10,6 +11,7 @@ import ServiceMember from "@/actions/members";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+
 const AddMember = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -21,6 +23,12 @@ const AddMember = () => {
     formState: { errors },
     reset,
   } = useForm<NewMember>();
+  const [descriptionState, setDescriptionState] = useState(() => 
+    EditorState.createEmpty()
+  );
+  // useEffect(() => {
+  //   console.log(EditorState)
+  // }, [EditorState])
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -42,7 +50,7 @@ const AddMember = () => {
         type: "success"
       }))
       setTimeout(() => {
-        navigate("/dashboard")
+        navigate("/admin/member")
       }, 1500)
     }
   });
@@ -152,7 +160,7 @@ const AddMember = () => {
             {errors.phone && errors.phone.message}
           </small>
         </div>
-        <div>
+        {/* <div>
           <Textarea
             placeholder="Deskripsi"
             rows={10}
@@ -164,7 +172,8 @@ const AddMember = () => {
           <small className="text-red-500">
             {errors.description && errors.description.message}
           </small>
-        </div>
+        </div> */}
+    
 
         <div>
           {image ? (
