@@ -1,15 +1,19 @@
-import Hero from "./components/Hero"
-import Structure from "./components/Structure"
-import Mision from "./components/Mision"
+import Hero from "./components/Hero";
+import Structure from "./components/Structure2";
+import Chat from "./components/Chat";
+import AnimationWrapper from "@/components/layout/AnimationWrapper";
 function Home() {
-
   return (
-    <div>
+    <AnimationWrapper keyValue='home'>
       <Hero />
-      <Structure />
-      <Mision />
-    </div>
-  )
+      <div className="mt-20">
+        <Structure />
+      </div>
+      <div className="mt-28">
+        <Chat />
+      </div>
+    </AnimationWrapper>
+  );
 }
 
-export default Home
+export default Home;

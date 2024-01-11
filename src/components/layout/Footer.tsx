@@ -4,7 +4,7 @@ import { navLinks, socialMedias } from "../../constant"
 function Footer() {
   return (
     <footer className="mt-9 py-9">
-      <div className="container flex flex-col gap-y-7 md:flex-row justify-between">
+      <div className="container max-w-full flex flex-col gap-y-7 md:flex-row justify-between">
         <div className="lg:w-[500px]">
           <h2 className="text-4xl">TI A PSDKU LUMAJANG</h2>
           <p className="font-dm text-[16px] mt-[32px]">
@@ -32,7 +32,7 @@ function Footer() {
       </div>
 
       <div className="flex justify-center mt-12">
-        <span className="block">Develop by <a href="">Ahmad Adi Iskandar Ubaidah</a></span>
+        <span className="block">Develop by <a href="https://adiiskandar.my.id" className="hover:text-yellow-300 font-semibold text-lg">Ahmad Adi Iskandar Ubaidah</a></span>
       </div>
     </footer>
   )

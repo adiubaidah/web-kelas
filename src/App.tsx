@@ -7,23 +7,24 @@ import { store } from "./reducers/store";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import Home from "./pages/Home/Home";
 import Loader from "./fragments/Loader";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
 import UnauthorizedRoute from "./components/layout/UnauthorizedRoute";
 
 //For User
+const Home = lazy(() => import("./pages/Home/Home"));
+const Gallery = lazy(() => import("./pages/Gallery/Gallery"))
 const Members = lazy(() => import("./pages/Members/Members"));
 const MemberDetails = lazy(() => import("./pages/MemberDetails/MemberDetails"));
 
 //For Admin
-const Admin = lazy(()=> import("./pages/Admin/Dashboard"))
+const Admin = lazy(() => import("./pages/Admin/Dashboard"));
 const EditMember = lazy(() => import("./pages/Admin/members/EditMember"));
 const AddMember = lazy(() => import("./pages/Admin/members/AddMember"));
 const Login = lazy(() => import("./pages/Admin/Login"));
 const AdminMembers = lazy(() => import("./pages/Admin/members/Members"));
-const Event = lazy(()=> import("./pages/Admin/events/Event"));
-const GalleryAdmin = lazy(()=> import("./pages/Admin/galleries/Gallery"));
+const Event = lazy(() => import("./pages/Admin/events/Event"));
+const GalleryAdmin = lazy(() => import("./pages/Admin/galleries/Gallery"));
 
 function App() {
   return (
@@ -32,7 +33,22 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Wrapper />}>
-              <Route path="/" element={<Home />} />
+              <Route
+                path="/"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Home />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/galeri"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Gallery />
+                  </Suspense>
+                }
+              />
               <Route
                 path="/anggota"
                 element={
@@ -61,7 +77,6 @@ function App() {
               </Route>
             </Route>
             <Route element={<ProtectedRoute redirectPath="/login" />}>
-              
               <Route
                 path="/admin"
                 element={
@@ -70,7 +85,7 @@ function App() {
                   </Suspense>
                 }
               />
-              
+
               <Route
                 path="/admin/member"
                 element={
@@ -95,7 +110,7 @@ function App() {
                   </Suspense>
                 }
               />
-               <Route
+              <Route
                 path="/admin/event"
                 element={
                   <Suspense fallback={<Loader />}>
@@ -103,7 +118,7 @@ function App() {
                   </Suspense>
                 }
               />
-               <Route
+              <Route
                 path="/admin/event/:eventId/gallery"
                 element={
                   <Suspense fallback={<Loader />}>

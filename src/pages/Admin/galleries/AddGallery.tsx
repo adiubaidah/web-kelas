@@ -36,9 +36,11 @@ const AddGallery = ({eventId}: {eventId: string}) => {
         })
       );
       setIsOpen(false);
+      setGallery(undefined)
       queryClient.invalidateQueries({
         queryKey: ["find-gallery", {eventId}],
       });
+
     },
     onError: () => {
       dispatch(

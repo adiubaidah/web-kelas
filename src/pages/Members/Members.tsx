@@ -9,6 +9,7 @@ import Card from "./components/Card";
 import { Button } from "@/components/ui/button";
 import Loader from "@/fragments/Loader";
 import { Loader2 } from "lucide-react";
+import AnimationWrapper from "@/components/layout/AnimationWrapper";
 
 function Members() {
   const [search, setSearch] = useState('');
@@ -30,15 +31,15 @@ function Members() {
   });
 
   return (
-    <div className="container max-w-full">
-      <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-[63.98px] font-lemon">
+    <AnimationWrapper className="container max-w-full" keyValue="members">
+      <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-[63.98px] font-lemon text-yellow-300">
         Daftar Anggota
       </h1>
       <SearchField search={search} setSearch={setSearch} isFetching={isFetching}/>
-      <div className="mt-[122px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {
-          isFetching ? <Loader className="h-full w-full flex justify-center" /> : ""
+          isFetching ? <Loader className="mt-10 h-full w-full flex justify-center" /> : ""
         }
+      <div className="mt-[122px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {data?.pages.map((group, i) => (
           <React.Fragment key={i}>
             {group.data.result.map((member: Member) => (
@@ -71,7 +72,7 @@ function Members() {
           </Button>
         )}
       </div>
-    </div>
+    </AnimationWrapper>
   );
 }
 

@@ -5,11 +5,11 @@ const navLinks = [
     },
     {
         name: 'Galeri',
-        link: 'galeri'
+        link: '/galeri'
     },
     {
         name: 'Anggota',
-        link: 'anggota'
+        link: '/anggota'
     }
 ]
 

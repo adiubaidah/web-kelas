@@ -12,6 +12,7 @@ class ServiceMember{
     getAllMemberWithoutImage() {
         return axiosInstance.get("/member-without-image")
     }
+
     createMember(formData: FormData) {
         return axiosInstance.post("/member", formData, {
             headers: {
@@ -22,6 +23,10 @@ class ServiceMember{
     findMember(memberId: string) {
         return axiosInstance.get("/member/"+memberId)
     }
+    findMemberBySlug(slug: string) {
+        return axiosInstance.get("/member-by-slug/"+slug)
+    }
+
     editMember(memberId: string, formData: FormData) {
         return axiosInstance.put("/member/"+memberId, formData, {
             headers: {

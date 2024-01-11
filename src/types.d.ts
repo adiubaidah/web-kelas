@@ -28,7 +28,17 @@ type Gallery = {
     eventId: string,
 }
 
+
+type EventAndGallery = Event & { Gallery: Gallery[] };
+
 type NewGallery = Omit<Gallery, "id">
+
+type Chat = {
+    id: string,
+    message: string,
+    createdAt: Date
+}
+export type NewChat = Pick<Chat, "message">
 
 interface Toast {
     isActive: boolean,
@@ -42,4 +52,4 @@ type User = {
     password: string
 }
 
-export type { Member, Toast, User, NewMember, Event, NewEvent, Gallery, NewGallery }
+export type { Member, Toast, User, NewMember, Event, NewEvent, Gallery, NewGallery, EventAndGallery, Chat}

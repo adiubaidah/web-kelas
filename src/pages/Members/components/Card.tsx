@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { MapPin } from "lucide-react";
 import Skeleton from "react-loading-skeleton";
 
 import { Member } from "@/types";
@@ -11,9 +10,7 @@ const Card = ({
   slug,
   background_image,
   image,
-  instagram,
   origin,
-  phone,
 }: Member) => {
   const [isBackgroundImageLoaded, setisBackgroundImageLoaded] = useState(false);
   const [isImageLoaded, setImageIsLoaded] = useState(false);
@@ -49,19 +46,11 @@ const Card = ({
         <h5 className="text-lg font-bold text-center leading-loose mb-2">
           {name}
         </h5>
-        <h6 className="text-stone-300 text-center text-sm font-bold font-dm leading-normal">
-          <FontAwesomeIcon icon={faLocationDot} className="me-2" /> {origin}
+        <h6 className="text-stone-300 font-bold flex justify-center gap-x-3">
+          <MapPin className="w-6 h-6 text-green-400" /> {origin}
         </h6>
       </div>
-      <div className="flex justify-center gap-x-9 mt-6">
-        <a href="" className="leading-loose font-medium text-center">
-          {instagram}
-        </a>
-        <a href="" className="leading-loose font-medium text-center">
-          {phone}
-        </a>
-      </div>
-      <div className="flex justify-center mt-3" >
+      <div className="flex justify-center mt-5" >
         <Anchor href={"/anggota/"+slug} variant="outline">
           Lihat Profile
         </Anchor>

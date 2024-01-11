@@ -4,6 +4,9 @@ class ServiceEvent{
     getAll() {
         return axiosInstance.get('/event');
     }
+    getAllAndGallery() {
+        return axiosInstance.get("/event-and-gallery")
+    }
     createEvent(payload: NewEvent) {
         return axiosInstance.post("/event", payload)
     }
