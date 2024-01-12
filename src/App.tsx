@@ -7,7 +7,7 @@ import { store } from "./reducers/store";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import Loader from "./fragments/Loader";
+import Loader from "./components/layout/Loader";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
 import UnauthorizedRoute from "./components/layout/UnauthorizedRoute";
 

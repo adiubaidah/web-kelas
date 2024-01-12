@@ -7,7 +7,7 @@ import SearchField from "./components/SearchField";
 import { Member } from "@/types";
 import Card from "./components/Card";
 import { Button } from "@/components/ui/button";
-import Loader from "@/fragments/Loader";
+import Loader from "@/components/layout/Loader";
 import { Loader2 } from "lucide-react";
 import AnimationWrapper from "@/components/layout/AnimationWrapper";
 

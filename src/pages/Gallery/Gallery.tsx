@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ServiceEvent from "@/actions/events";
-import Loader from "@/fragments/Loader";
+import Loader from "@/components/layout/Loader";
 import "swiper/css";
 import { EventAndGallery, Gallery } from "@/types";
 

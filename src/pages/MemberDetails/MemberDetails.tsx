@@ -8,7 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import parse from "html-react-parser";
 
 import ServiceMember from "@/actions/members";
-import Loader from "@/fragments/Loader";
+import Loader from "@/components/layout/Loader";
 import AnimationWrapper from "@/components/layout/AnimationWrapper";
 
 function MemberDetails() {

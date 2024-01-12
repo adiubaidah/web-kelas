@@ -1,5 +1,5 @@
 import { Tree, TreeNode } from "react-organizational-chart";
-import Username from "@/fragments/Username";
+import Person from "@/pages/Home/components/Person";
 
 const Structure2 = () => {
   return (
@@ -12,24 +12,24 @@ const Structure2 = () => {
           lineWidth={"2px"}
           lineColor={"white"}
           lineBorderRadius={"10px"}
-          label={<Username name="Alvionitha Sari" jabatan="Wali kelas" />}
+          label={<Person name="Alvionitha Sari" jabatan="Wali kelas" />}
         >
-          <TreeNode label={<Username name="Alfian" jabatan="Ketua Kelas" />}>
+          <TreeNode label={<Person name="Alfian" jabatan="Ketua" />}>
             <TreeNode
-              label={<Username name="Alfian" jabatan="Ketua Kelas" />}
+              label={<Person name="Alfian" jabatan="Ketua" />}
             ></TreeNode>
             <TreeNode
-              label={<Username name="Alfian" jabatan="Ketua Kelas" />}
+              label={<Person name="Alfian" jabatan="Ketua" />}
             ></TreeNode>
           </TreeNode>
           <TreeNode
-            label={<Username name="Irham" jabatan="Wakil Ketua Kelas" />}
+            label={<Person name="Irham" jabatan="Wakil Ketua" />}
           >
             <TreeNode
-              label={<Username name="Irham" jabatan="Wakil Ketua Kelas" />}
+              label={<Person name="Irham" jabatan="Wakil Ketua" />}
             ></TreeNode>
             <TreeNode
-              label={<Username name="Irham" jabatan="Wakil Ketua Kelas" />}
+              label={<Person name="Irham" jabatan="Wakil Ketua" />}
             ></TreeNode>
           </TreeNode>
         </Tree>

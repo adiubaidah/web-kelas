@@ -1,7 +1,7 @@
 import {motion} from "framer-motion"
 
 
-function Username({name, jabatan} : {name: string, jabatan: string}) {
+function Person({name, jabatan} : {name: string, jabatan: string}) {
   return (
     <motion.div initial={{opacity: 0, y: 300}} whileInView={{opacity: 1, y:0}} transition={{duration: 0.8, ease: "backOut",}} viewport={{once: true}}>
         <div className="block rounded-full bg-second"></div>
@@ -13,4 +13,4 @@ function Username({name, jabatan} : {name: string, jabatan: string}) {
   )
 }
 
-export default Username
+export default Person
