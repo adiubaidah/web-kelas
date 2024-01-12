@@ -1,4 +1,4 @@
-import { AnimatePresence,  motion } from "framer-motion";
+import { AnimatePresence,  motion, Transition } from "framer-motion";
 function AnimationWrapper({
   children,
   initial = { opacity: 0 },
@@ -11,7 +11,7 @@ function AnimationWrapper({
     keyValue: React.Key,
     animate?: object,
     initial?: object,
-    transition?: object,
+    transition?: Transition,
     className?: string
 
 }) {
