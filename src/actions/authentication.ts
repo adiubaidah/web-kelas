@@ -5,7 +5,9 @@ import { axiosInstance } from "@/lib/utils";
 class ServiceAuth{
     
     login(payload: User) {
-        return axiosInstance.post('/auth/login', payload);
+        return axiosInstance.post('/auth/login', payload, {
+            
+        });
     }
     register(payload: User) {
         return axiosInstance.post('/auth/register', payload);
@@ -17,7 +19,7 @@ class ServiceAuth{
         return axiosInstance.post('/auth/is-not-auth')
     }
     logout() {
-        return axiosInstance.post('/auth/logout')
+        return axiosInstance.post("/auth/logout")
     }
 
     

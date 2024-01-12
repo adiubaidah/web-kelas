@@ -20,7 +20,7 @@ const UnauthorizedRoute = ({ children }: UnauthorizedRouteProps) => {
 
   if (isError) {
     // jika error berarti terautentikasi
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/admin" />;
   }
   
   return children ? children : <Outlet />;
