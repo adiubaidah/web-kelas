@@ -69,51 +69,54 @@ const Chat = () => {
   };
 
   return (
-    <section className="container max-w-full flex flex-col items-center background-blur-right">
-      <h2 className="font-lemon text-center text-xl md:text-3xl text-yellow-300">
-        Ruang Chat
-      </h2>
-      <div className="w-full max-w-[1000px]">
-        <div
-          ref={chatContainerRef}
-          className="mt-10 bg-black rounded-2xl text-[12px] py-6 px-4 space-y-3 h-[300px] overflow-y-auto custom-scrollbar"
-        >
-          {chats.map((chat: ChatType) => (
-            <p
-              className="bg-blue-950 rounded-2xl px-4 py-3 w-fit"
-              key={chat.id}
-            >
-              {chat.message}
-            </p>
-          ))}
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
-          <Textarea
-            className="px-5 py-2"
-            rows={3}
-            placeholder="Halo guys, gimana kabarnya ?"
-            disabled={createChatMutation.isPending}
-            {...register("message", { required: "Pesan diperlukan" })}
-          />
-          {createChatMutation.isPending ? (
-            <Button
-              variant="success"
-              className="bg-green-700"
-              type="button"
-              disabled
-            >
-              <Loader2 className="animate-spin w-4 h-4 mr-2" />
-              Mengirim pesan
-            </Button>
-          ) : (
-            <Button variant="success" type="submit">
-              Kirim
-            </Button>
+    <section className="container max-w-full flex flex-col items-center relative overflow-x-hidden">
+      <div className="w-80 h-80 background-blur-right" />
+      <div>
+        <h2 className="font-lemon text-center text-xl md:text-3xl text-yellow-300">
+          Ruang Chat
+        </h2>
+        <div className="w-full max-w-[1000px]">
+          <div
+            ref={chatContainerRef}
+            className="mt-10 bg-black rounded-2xl text-[12px] py-6 px-4 space-y-3 h-[300px] overflow-y-auto custom-scrollbar"
+          >
+            {chats.map((chat: ChatType) => (
+              <p
+                className="bg-blue-950 rounded-2xl px-4 py-3 w-fit"
+                key={chat.id}
+              >
+                {chat.message}
+              </p>
+            ))}
+          </div>
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+            <Textarea
+              className="px-5 py-2"
+              rows={3}
+              placeholder="Halo guys, gimana kabarnya ?"
+              disabled={createChatMutation.isPending}
+              {...register("message", { required: "Pesan diperlukan" })}
+            />
+            {createChatMutation.isPending ? (
+              <Button
+                variant="success"
+                className="bg-green-700"
+                type="button"
+                disabled
+              >
+                <Loader2 className="animate-spin w-4 h-4 mr-2" />
+                Mengirim pesan
+              </Button>
+            ) : (
+              <Button variant="success" type="submit">
+                Kirim
+              </Button>
+            )}
+          </form>
+          {errors.message && (
+            <small className="text-red-600">{errors.message.message}</small>
           )}
-        </form>
-        {errors.message && (
-          <small className="text-red-600">{errors.message.message}</small>
-        )}
+        </div>
       </div>
     </section>
   );

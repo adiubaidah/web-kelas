@@ -22,7 +22,8 @@ function Gallery() {
   }
 
   return (
-    <AnimationWrapper className="container max-w-full background-blur-right" keyValue="gallery">
+    <AnimationWrapper className="container max-w-full relative overflow-x-hidden" keyValue="gallery">
+        <div className="background-blur-right w-72 h-72" />
       <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-[63.98px] font-lemon text-yellow-300">
         Gallery
       </h1>
@@ -34,7 +35,7 @@ function Gallery() {
               {item.name} - {item.year}
             </h3>
             <Swiper
-              className="mt-4 overflow"
+              className="mt-4"
               spaceBetween={30}
               breakpoints={{
                 400: {
@@ -47,7 +48,6 @@ function Gallery() {
             >
               {item.Gallery.map((gallery: Gallery) => (
                 <SwiperSlide key={gallery.id} className="cursor-grab">
-                  {/* <img src={gallery.image} alt={item.name} /> */}
                   <Fancy imageSrc={gallery.image} alt={item.name} group={item.name}/>
                 </SwiperSlide>
               ))}

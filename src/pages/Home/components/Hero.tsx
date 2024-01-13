@@ -3,7 +3,7 @@ import { Instagram } from "lucide-react";
 
 function Hero() {
   return (
-    <div className="h-screen pt-12 px-1 flex flex-col items-center justify-center max-w-full background-hero">
+    <section className="h-screen pt-12 px-1 flex flex-col items-center justify-center max-w-full background-hero">
       <div className="text-center">
         <h3 className="font-bold capitalize tracking-wider text-lg md:text-2xl lg:text-4xl">
           Selamat Datang di
@@ -29,7 +29,7 @@ function Hero() {
           <p className="text-pink-500">13</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
